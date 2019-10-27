@@ -47,11 +47,11 @@ router.post('/', (req, res) => {
     }
 
     const newGood = new Good({
-        title: req.body.title
-        // description: req.body.description,
-        // properties: req.body.properties,
-        // quantity: req.body.quantity,
-        // photo: req.body.photo
+        title: req.body.title,
+        description: req.body.description,
+        properties: req.body.properties,
+        quantity: req.body.quantity,
+        photo: req.body.photo
     });
 
     newGood.save().then(good => res.json(good));

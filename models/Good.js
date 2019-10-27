@@ -6,22 +6,18 @@ const GoodSchema = new Schema({
         type: String,
         required: true
     },
-    // description: {
-    //     type: String,
-    //     required: true
-    // },
-    // properties: {
-    //     type: String,
-    //     required: true
-    // },
-    // quantity: {
-    //     type: Number,
-    //     required: true
-    // },
-    // photo: {
-    //     type: String,
-    //     required: true
-    // },
+    description: {
+        type: String
+    },
+    properties: {
+        type: String
+    },
+    quantity: {
+        type: Number
+    },
+    photo: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now
