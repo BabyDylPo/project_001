@@ -5,25 +5,31 @@ const port = process.env.PORT || 3333;
 const app = express();
 const db = require('./config/keys').mongoURI;
 
-//ROUTES VARIABLES
-const goods = require("./routes/api/goods");
 
+
+//Connecting to the DB
 mongoose
-    .connect(db, { userNewUrlParser: true })
+    .connect(db, { useNewUrlParser: true })
     .then( () => console.log("Connected to MongoDB successfully"))
-    .catch( err => console.log(err));
-
-//basic route for setup purposes
-app.get("/", (req, res) => {
-    res.send("Hello World!!");
-});
-
-//ROUTES
-app.use("/api/goods", goods);
+    .catch( err => {
+        console.log('Could not connect to DB.  Exiting now...', err);
+        process.exit();
+    });
 
 //body-parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+    
+//basic route for setup purposes
+app.get("/", (req, res) => {
+    console.log(req);
+    res.send("Hell of a World");
+});
+
+//require Goods routes
+const goods = require("./routes/api/goods");
+app.use("/api/goods", goods);
+
 
 //This socket listens for a connection to the port path
 //on success the following message is logged to the console 

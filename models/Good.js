@@ -6,26 +6,29 @@ const GoodSchema = new Schema({
         type: String,
         required: true
     },
-    description: {
-        type: String,
-        required: true
-    },
-    properties: {
-        type: String,
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true
-    },
-    photo: {
-        type: String,
-        required: true
-    },
+    // description: {
+    //     type: String,
+    //     required: true
+    // },
+    // properties: {
+    //     type: String,
+    //     required: true
+    // },
+    // quantity: {
+    //     type: Number,
+    //     required: true
+    // },
+    // photo: {
+    //     type: String,
+    //     required: true
+    // },
     date: {
         type: Date,
         default: Date.now
     }
+}, {
+    timestames: true
 });
 
-module.exports = Good = mongoose.model('goods', GoodSchema);
+const Good = mongoose.model('good', GoodSchema);
+module.exports = Good;

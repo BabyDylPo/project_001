@@ -12,13 +12,17 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const passport = require('passport');
 
-const Good = require('../../models/Good)');
+const Good = require('../../models/Good');
 const validateGoodInput = require('../../validation/goods');
+
+// TEST ROUTE
+router.get("/test", (req, res) => res.json({ msg: "This is the goods route" }));
+
 
 // GET ALL GOODS
 router.get('/', (req, res) => {
+
     Good.find()
         .sort({ date: -1 })
         .then(goods => res.json(goods))
@@ -26,22 +30,28 @@ router.get('/', (req, res) => {
 });
 
 // GET A GOOD by ID
-router.get('/:id', (req, res) => {
-    Good.findById(req.params.id)
-        .then(good => res.json(good))
-        .catch(err => 
-            res.status(404).json({ nogoodfound: 'No good found with that ID'})
-        );
-});
+// router.get('/:id', (req, res) => {
+//     Good.findById(req.params.id)
+//         .then(good => res.json(good))
+//         .catch(err => 
+//             res.status(404).json({ nogoodfound: 'No good found with that ID'})
+//         );
+// });
 
 // CREATE A GOOD
 router.post('/', (req, res) => {
+    const { isValid, errors } = validateGoodInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     const newGood = new Good({
-        title: req.body.title,
-        description: req.body.description,
-        properties: req.body.properties,
-        quantity: req.body.quantity,
-        photo: req.body.photo
+        title: req.body.title
+        // description: req.body.description,
+        // properties: req.body.properties,
+        // quantity: req.body.quantity,
+        // photo: req.body.photo
     });
 
     newGood.save().then(good => res.json(good));
