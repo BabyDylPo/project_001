@@ -1,10 +1,50 @@
 //Template for test route setup
-//use this for each new route created
+//use this for testing each new route created
 //------------------------------------
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+// const router = express.Router();
 
-router.get("/test", (req, res) => res.json({ msg: "This is the goods route"}));
+// router.get("/test", (req, res) => res.json({ msg: "This is the goods route"}));
+
+// module.exports = router;
+//------------------------------------
+
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const passport = require('passport');
+
+const Good = require('../../models/Good)');
+const validateGoodInput = require('../../validation/goods');
+
+// GET ALL GOODS
+router.get('/', (req, res) => {
+    Good.find()
+        .sort({ date: -1 })
+        .then(goods => res.json(goods))
+        .catch(err => res.status(404).json({ nogoodsfound: 'No goods found' }));
+});
+
+// GET A GOOD by ID
+router.get('/:id', (req, res) => {
+    Good.findById(req.params.id)
+        .then(good => res.json(good))
+        .catch(err => 
+            res.status(404).json({ nogoodfound: 'No good found with that ID'})
+        );
+});
+
+// CREATE A GOOD
+router.post('/', (req, res) => {
+    const newGood = new Good({
+        title: req.body.title,
+        description: req.body.description,
+        properties: req.body.properties,
+        quantity: req.body.quantity,
+        photo: req.body.photo
+    });
+
+    newGood.save().then(good => res.json(good));
+});
 
 module.exports = router;
-//------------------------------------

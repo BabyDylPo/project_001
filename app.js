@@ -14,7 +14,9 @@ mongoose
     .catch( err => console.log(err));
 
 //basic route for setup purposes
-app.get("/", (req, res) => res.send("Hello World!!"));
+app.get("/", (req, res) => {
+    res.send("Hello World!!");
+});
 
 //ROUTES
 app.use("/api/goods", goods);
