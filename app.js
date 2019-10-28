@@ -19,7 +19,6 @@ mongoose
     .then( () => console.log("Connected to MongoDB successfully"))
     .catch( err => {
         console.log('Could not connect to DB.  Exiting now...', err);
-        process.exit();
     });
 
 //body-parser middleware
