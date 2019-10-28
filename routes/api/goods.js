@@ -57,4 +57,6 @@ router.post('/', (req, res) => {
     newGood.save().then(good => res.json(good));
 });
 
+// DELETE A GOOD by ID
+
 module.exports = router;
