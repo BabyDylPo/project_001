@@ -11,9 +11,8 @@ class NavBar extends React.Component {
     // Selectively render links dependent on whether the user is logged in 
     getLinks() {
         return (
-            <div>
+            <div className="nav-container">
                 <Link to={'/goods'}>All Goods</Link>
-                <br />
                 <Link to={'/new_good'}>Create a Good!</Link>
             </div>
         );
@@ -21,7 +20,7 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="nav-div">
                 { this.getLinks() }
             </div>
         );

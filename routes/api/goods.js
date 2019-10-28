@@ -41,8 +41,7 @@ router.get('/', (req, res) => {
 // CREATE A GOOD
 router.post('/', (req, res) => {
     const { isValid, errors } = validateGoodInput(req.body);
-    console.log("req.body:")
-    console.log(req.body);
+    
     if (!isValid) {
         return res.status(400).json(errors);
     }
