@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GoodBox from './good_box';
 
 class GoodManufacture extends React.Component {
@@ -17,6 +18,7 @@ class GoodManufacture extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
     componentWillReceiveProps(nextProps) {
         this.setState({ newGood: nextProps.newGood.title });
     }
@@ -31,8 +33,6 @@ class GoodManufacture extends React.Component {
             photo: this.state.photo
         };
 
-        console.log(good);
-
         this.props.manufactureGood(good);
         this.setState({ 
             title: '',
@@ -41,6 +41,11 @@ class GoodManufacture extends React.Component {
             quantity: '',
             photo: ''
         });
+
+        let path = window.location.href.split('/#/');
+        path[1] = 'goods';
+        path = path.join('/#/');
+        window.location.href = path;
     }
 
     update(type) {
@@ -110,7 +115,7 @@ class GoodManufacture extends React.Component {
                     </div>
                 </form>
                 <br />
-                <GoodBox text={ this.state.newGood } />
+                {/* <GoodBox text={ this.props.newGood } /> */}
             </div>
         )
     }

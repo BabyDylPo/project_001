@@ -11,9 +11,9 @@ const App = () => (
     <div>
         <NavBarContainer />
         <Switch>
-            <AuthRoute exact path="/" component={ MainPage } />
-            <AuthRoute exact path="/goods" component={ GoodsContainer } />
             <AuthRoute exact path="/new_good" component={ GoodManufactureContainer } />
+            <AuthRoute exact path="/goods" component={ GoodsContainer } />
+            <AuthRoute exact path="/" component={ MainPage } />
         </Switch>
     </div>
 );
