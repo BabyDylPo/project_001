@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+// import './navbar.css';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class NavBar extends React.Component {
         return (
             <div>
                 <Link to={'/goods'}>All Goods</Link>
+                <br />
                 <Link to={'/new_good'}>Create a Good!</Link>
             </div>
         );

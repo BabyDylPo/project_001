@@ -3,7 +3,7 @@ import { getGoods, createGood } from '../utils/good_api_util';
 export const RECEIVE_GOODS = "RECEIVE_GOODS";
 export const RECEIVE_NEW_GOOD = "RECEIVE_NEW_TWEET";
 
-export const recieveGoods = goods => ({
+export const receiveGoods = goods => ({
     type: RECEIVE_GOODS,
     goods
 });

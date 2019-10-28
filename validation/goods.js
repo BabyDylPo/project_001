@@ -5,8 +5,6 @@ module.exports = function validateGoodInput(data) {
     let errors = {};
 
     // TITLE
-    console.log(data);
-
     data.title = validText(data.title) ? data.title : '';
 
     if (!Validator.isLength(data.title, { max: 50 })) {

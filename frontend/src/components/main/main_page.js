@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class MainPage extends React.Component {
     render() {
@@ -13,4 +14,4 @@ class MainPage extends React.Component {
     }
 }
 
-export default MainPage;
+export default withRouter(MainPage);

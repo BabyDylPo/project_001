@@ -41,7 +41,8 @@ router.get('/', (req, res) => {
 // CREATE A GOOD
 router.post('/', (req, res) => {
     const { isValid, errors } = validateGoodInput(req.body);
-
+    console.log("req.body:")
+    console.log(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -53,7 +54,8 @@ router.post('/', (req, res) => {
         quantity: req.body.quantity,
         photo: req.body.photo
     });
-
+    console.log("newGood");
+    console.log(newGood);
     newGood.save().then(good => res.json(good));
 });
 

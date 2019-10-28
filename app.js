@@ -22,7 +22,6 @@ app.use(bodyParser.json());
     
 //basic route for setup purposes
 app.get("/", (req, res) => {
-    console.log(req);
     res.send("Hell of a World");
 });
 
